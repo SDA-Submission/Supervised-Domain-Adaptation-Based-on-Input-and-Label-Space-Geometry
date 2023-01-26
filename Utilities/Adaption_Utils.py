@@ -53,6 +53,10 @@ def dsne_loss(fts, ys, ftt, yt):
 
 ## NEM
 def nem_loss(tgt_img, src_feature, tgt_feature, src_label, tgt_label):
+    """
+    implementation of NEM loss, the weight of the graph loss is taken according to figure 7 in
+    https://ieeexplore.ieee.org/document/8836530
+    """
     pairwise_distances_f = torch.cdist(tgt_feature, tgt_feature, compute_mode="donot_use_mm_for_euclid_dist")
     tmp = torch.flatten(tgt_img, start_dim=1)
     pairwise_distances_x = torch.cdist(tmp, tmp, compute_mode="donot_use_mm_for_euclid_dist") ** 2
@@ -212,6 +216,10 @@ def pdist(sample_1, sample_2, norm=2, eps=1e-5):
 
 
 def get_scale_fac(d, discard_diag=False):
+    """
+    return the scale factor for the kernel regression
+    when d=pdist(x,y), set discard_diag to True, when d=pdist(x,x), set discard_diag to False.
+    """
     # when d=pdist(x,y), set discard_diag to True, when d=pdist(x,x), set discard_diag to False.
     device = d.device if d.is_cuda else torch.device("cpu")
     if discard_diag:
@@ -222,6 +230,9 @@ def get_scale_fac(d, discard_diag=False):
 
 
 def get_weight_matrix(pairwise_distances, n_nearest_neighbours=5, kernel_scale='Fixed', use_scale_fac_grad=True):
+    """
+    returns the kernel for kernel regression
+    """
     scale_fac = torch.tensor(1.0)
     if n_nearest_neighbours > 0:
         _, indices = torch.sort(pairwise_distances)

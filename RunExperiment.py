@@ -14,23 +14,23 @@ parser = GetParser(parser)
 def RunCofiguration(hp):
     print('--------- Beginning experiment %s ---------' % hp.ExpName)
 
-    ## Load dataset
+    ## ----- Load dataset-----
     print('Loading datasets')
     train_loader, test_loader, val_loader, n_classes = get_datasets(hp)
     train_iter, val_iter = [get_iterator(x) for x in [train_loader, val_loader]]
 
-    ## Load model + optimizer initializations
+    ## ----- Load model + optimizer initializations-----
     device = torch.device("cuda:%g" % hp.GPU if (torch.cuda.is_available() and hp.GPU >= 0) else "cpu")
     net = get_model(hp, n_classes, device)
     net.to(device)
     optimizer = get_optimizer(net, hp)
 
-    ## Initialize logger
+    ## ----- Initialize logger-----
     logger = MyLogger(n_classes)
     if hp.LogToWandb:
         get_initialized_wandb_logger(hp)
 
-    ## Train model
+    ## ----- Train model----- 
     criterion = get_objective(hp)
     progress_bar = tqdm(range(hp.NumberOfBatches),
                         desc="Training model",
@@ -110,7 +110,7 @@ def RunCofiguration(hp):
             log_to_wandb(hp, batch, loss_s, loss_t, val_loss_s, val_loss_t,
                          train_acc_src, train_acc_tgt, val_acc_src, val_acc_tgt)
 
-    ## Evaluate on test and log results
+    ## ----- Evaluate on test and log results-----
     src_test_metrics, tgt_test_metrics = [perf_eval(hp,net, test_loader, BatchLim=100, Domain=domain,
                                              Text='Evaluating test datapoints from the %s domain' % domain) for domain
                                     in ['Src', 'Tgt']]

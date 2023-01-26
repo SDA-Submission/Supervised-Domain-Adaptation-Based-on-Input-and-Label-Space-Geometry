@@ -9,20 +9,20 @@ def GetModifiedConf(keys=[],vals=[]):
 class ConfClass():
     def __init__(self):
         # misc + logging
-        self.GPU = -1
-        self.LogToWandb=True
+        self.GPU = -1 #-1 for CPU, otherwise - GPU ID
+        self.LogToWandb=True 
         self.WadbUsername='EnterYourUserName'
         self.ProjectName='SDA_Experiments_Project'
         self.ExpName='SDA_Experiment'
         self.MonitorTraining=True
-        self.ValMonitoringFactor=10
+        self.ValMonitoringFactor=10 #monitor validation each 10th batch
 
         # dataset
         self.Src='M'
         self.Tgt='U'
         self.TaskName= self.Src+'_to_'+self.Tgt
         self.SamplesPerClass=7
-        self.UnlabeledTgtClasses=0
+        self.UnlabeledTgtClasses=0 #for zeros-shot DA
         self.TaskObjective='CE' # CrossEntropy(CE), L1, L2
 
         # optimizer hyperparameters
@@ -33,7 +33,7 @@ class ConfClass():
         self.WD=1e-3
 
         # model hyperparameters
-        self.Coeffs=[1,1,1,1,1]
+        self.Coeffs=[1,1,1,1,1] #S,T,UDA,CDCA,Baseline (CCSA,dSNE,NEM)
         self.UdaMethod='CORAL'
         self.NumberOfNearestNeighbours = -1
         self.KernelScale = 'Auto'
@@ -65,6 +65,9 @@ def GetParser(parser):
 
 
 def GetConfFromArgs(args):
+    """
+    return a configuration object according to the parsed arguments
+    """
     hp = ConfClass()
     hp.Src=args.Src
     hp.Tgt =args.Tgt
@@ -98,7 +101,7 @@ def GetConfFromArgs(args):
         hp.Optimizer = 'SGD'
         hp.LearningRate = 1e-4
         hp.BatchSize = 32
-        hp.NumberOfBatches = 50000
+        hp.NumberOfBatches = 5000
         hp.WD = 1e-4
 
     if args.Src == 'CityCam':
