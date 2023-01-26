@@ -92,7 +92,7 @@ def get_datasets(hp):
         dataset_dir = os.path.join('Datasets','CityCam')
         src_dataset = WCityCam(root_dir=dataset_dir, domains_list=[x for x in all_cameras if not(x==tgt_camera)])
         tgt_dataset = WCityCam(root_dir=dataset_dir, domains_list=[tgt_camera])
-        train_src_dataset,test_src_dataset,train_tgt_dataset,test_tgt_dataset=partition_citycam_datasets(src_dataset,tgt_dataset)
+        train_src_dataset,test_src_dataset,train_tgt_dataset,test_tgt_dataset=partition_citycam_datasets(hp,src_dataset,tgt_dataset)
         n_classes = -1
 
     if hp.Src in ['M', 'U','A', 'W', 'D']:

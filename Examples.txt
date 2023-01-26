@@ -17,7 +17,7 @@ In order to run the Amazon to Webcam experiment using CCSA/dSNE/NEM use:
 ----VisDA-C Classification Tasks----
 In order to run the Synthetic to Real experiment using Our methods use:
     python RunExperiment.py --Src "S" --Tgt "R" --SamplesPerClass 10 --Method "SDA_IO" --GPU_ID -1
-In order to run the Amazon to Webcam experiment using CCSA/dSNE/NEM use:
+In order to run the Synthetic to Real experiment using CCSA/dSNE/NEM use:
     python RunExperiment.py --Src "S" --Tgt "R" --SamplesPerClass 10 --Method "CCSA" --GPU_ID -1
     python RunExperiment.py --Src "S" --Tgt "R" --SamplesPerClass 10 --Method "dSNE" --GPU_ID -1
     python RunExperiment.py --Src "S" --Tgt "R" --SamplesPerClass 10 --Method "NEM" --GPU_ID -1
