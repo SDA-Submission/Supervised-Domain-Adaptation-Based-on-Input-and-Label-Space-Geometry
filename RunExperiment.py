@@ -64,6 +64,12 @@ def RunCofiguration(hp):
         if hp.Method == 'NEM':
             loss_nem = nem_loss(tgt_img, src_feature, tgt_feature, src_label, tgt_label)
             loss = hp.Coeffs[0] * loss_s + hp.Coeffs[1] * loss_t + hp.Coeffs[4] * loss_nem
+        if hp.Method == 'S-Only':
+            loss =  loss_s
+        if hp.Method == 'T-Only':
+            loss =  loss_t
+        if hp.Method == 'S+T':
+            loss = hp.Coeffs[0] * loss_s + hp.Coeffs[1] * loss_t
 
         loss.backward()
         optimizer.step()

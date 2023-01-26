@@ -52,7 +52,8 @@ def GetParser(parser):
     parser.add_argument("--SamplesPerClass", type=int, default=3,
                         help="SamplesPerClass", choices=[1, 3, 5, 7, 10, 15, 20])
     parser.add_argument("--Method", type=str, default='SDA_IO',
-                        help="Method, our methods is denoted by SDA_IO", choices=['SDA_IO', 'CCSA', 'dSNE', 'NEM'])
+                        help="Method, our method is denoted by SDA_IO", choices=['SDA_IO', 'CCSA', 'dSNE', 'NEM',
+                                                                                 'S-Only','T-Only','S+T'])
     parser.add_argument("--GPU_ID", type=int, default=-1,
                         help="GPU_ID, -1 for CPU")
     parser.add_argument("--LogToWandb", type=bool, default=False,
