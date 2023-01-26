@@ -6,6 +6,9 @@ from torchvision.datasets.folder import default_loader
 from sklearn.model_selection import train_test_split
 import copy
 import numpy as np
+import time
+import wget
+
 ##
 VISDA_CLASSES = ['plant', 'train', 'bus', 'horse', 'knife', 'bicycle', 'aeroplane', 'person', 'motorcycle', 'car',
                  'skateboard', 'truck']
