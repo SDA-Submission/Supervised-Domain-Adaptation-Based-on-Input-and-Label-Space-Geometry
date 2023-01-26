@@ -35,3 +35,13 @@ for t in {1..5}; do
 	done
 done
 
+# REM ----------------VisDA-C Experiments----------------
+for t in {1..5}; do
+	for m in ${Methods[@]}; do
+	        python RunExperiment.py --Src "S" --Tgt "R" --SamplesPerClass 10 --Method ${m} --GPU_ID 0 --LogToWandb True
+	        python RunExperiment.py --Src "S" --Tgt "R" --SamplesPerClass 15 --Method ${m} --GPU_ID 0 --LogToWandb True
+	        python RunExperiment.py --Src "S" --Tgt "R" --SamplesPerClass 20 --Method ${m} --GPU_ID 0 --LogToWandb True
+	done
+done
+
+

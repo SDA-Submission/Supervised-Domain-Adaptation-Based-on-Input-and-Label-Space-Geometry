@@ -34,3 +34,12 @@ set Methods="SDA_IO" "CCSA" "dSNE"
         python RunExperiment.py --Src "D" --Tgt "W" --SamplesPerClass  3  --Method %%m --GPU_ID 0 --LogToWandb True
     ))
 ))
+
+@REM ----------------VisDA-C Experiments----------------
+(for %% IN (0,1,5) do (
+    (for %%m in (%Methods%) do (
+        python RunExperiment.py --Src "S" --Tgt "R" --SamplesPerClass  10  --Method %%m --GPU_ID 0 --LogToWandb True
+        python RunExperiment.py --Src "S" --Tgt "R" --SamplesPerClass  15  --Method %%m --GPU_ID 0 --LogToWandb True
+        python RunExperiment.py --Src "S" --Tgt "R" --SamplesPerClass  20  --Method %%m --GPU_ID 0 --LogToWandb True
+    ))
+))
