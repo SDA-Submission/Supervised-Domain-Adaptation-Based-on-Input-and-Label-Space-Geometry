@@ -8,6 +8,7 @@ import copy
 import numpy as np
 import time
 import wget
+import tarfile
 
 ##
 VISDA_CLASSES = ['plant', 'train', 'bus', 'horse', 'knife', 'bicycle', 'aeroplane', 'person', 'motorcycle', 'car',
