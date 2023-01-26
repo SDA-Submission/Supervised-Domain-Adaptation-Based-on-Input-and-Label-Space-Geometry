@@ -23,7 +23,10 @@ In order to run the Synthetic to Real experiment using CCSA/dSNE/NEM use:
     python RunExperiment.py --Src "S" --Tgt "R" --SamplesPerClass 10 --Method "NEM" --GPU_ID -1
 
 ----CityCam Regression Tasks----
-    python RunExperiment.py --Src "CityCam" --Tgt "CityCam_495" --SamplesPerClass 10 --Method "SDA_IO" --GPU_ID -1
+    python RunExperiment.py --Src "CityCam" --Tgt "CityCam_495" --SamplesPerClass 20 --Method "SDA_IO" --GPU_ID -1
+     python RunExperiment.py --Src "CityCam" --Tgt "CityCam_495" --SamplesPerClass 50 --Method "SDA_IO" --GPU_ID -1
+     python RunExperiment.py --Src "CityCam" --Tgt "CityCam_495" --SamplesPerClass 100 --Method "SDA_IO" --GPU_ID -1
+     python RunExperiment.py --Src "CityCam" --Tgt "CityCam_495" --SamplesPerClass 200 --Method "SDA_IO" --GPU_ID -1
 
 ----GPU----
 In order to use GPU, set GPU_ID to the device index:
