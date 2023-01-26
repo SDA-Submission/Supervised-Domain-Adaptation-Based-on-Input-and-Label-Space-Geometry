@@ -1,6 +1,5 @@
 #!/bin/bash
 #REM ----------------Digits Experiments----------------
-
 SamplesPerClass=("1" "3" "5" "7")
 Methods=("SDA_IO" "CCSA" "dSNE")
 
@@ -12,7 +11,6 @@ for s in ${SamplesPerClass[@]}; do
 		done
 	done
 done
-
 
 # REM MNIST->USPS
 for s in ${SamplesPerClass[@]}; do

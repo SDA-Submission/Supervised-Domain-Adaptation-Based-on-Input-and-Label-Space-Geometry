@@ -22,7 +22,6 @@ set Methods="SDA_IO" "CCSA" "dSNE"
      ))
 ))
 
-
 @REM ----------------Office Experiments----------------
 (for %% IN (0,1,5) do (
     (for %%m in (%Methods%) do (
